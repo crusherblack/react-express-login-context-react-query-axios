@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import axios from "axios";
 
 const Post = () => {
   const [posts, setPosts] = useState([]);
 
   const fetchPosts = async () => {
-    const response = await fetch("http://localhost:5000/api/v1/posts");
-    const posts = await response.json();
+    try {
+      const response = await axios("http://localhost:5000/api/v1/posts");
 
-    setPosts(posts.data.posts);
+      if (response.status === 500) {
+        console.log("server error");
+      }
+
+      setPosts(response.data.data.posts);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
