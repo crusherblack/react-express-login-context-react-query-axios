@@ -24,6 +24,9 @@ const NavbarComponent = () => {
           <Nav.Link as={Link} to="/nested-api" className="text-white">
             Nested API
           </Nav.Link>
+          <Nav.Link as={Link} to="/react-query" className="text-white">
+            React Query
+          </Nav.Link>
         </Nav>
         <Nav.Link as={Link} to="/cart" className="text-white">
           Product: {state.carts.length}
