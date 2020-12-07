@@ -45,7 +45,6 @@ const Post = () => {
 
     try {
       const response = await API.post("/post", body, config);
-      const newPost = response.data.data.post;
 
       setFormData({
         title: "",
