@@ -26,7 +26,7 @@ const {
 const { getUsers, getProfiles } = require("../controllers/user");
 const { getBoooks, getAuthors } = require("../controllers/bookAuthor");
 
-const { register, login } = require("../controllers/auth");
+const { register, login, checkAuth } = require("../controllers/auth");
 
 const { route } = require("./routeV2");
 
@@ -61,5 +61,6 @@ router.get("/authors", getAuthors);
 //Auth
 router.post("/register", register);
 router.post("/login", login);
+router.get("/check-auth", authentication, checkAuth);
 
 module.exports = router;

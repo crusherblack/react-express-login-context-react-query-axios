@@ -23,7 +23,9 @@ const Home = () => {
       <div className="container mt-3">
         <div className="card">
           <div className="card-header bg-white">
-            <h4 className="text-center">Welcome</h4>
+            <h4 className="text-center">Welcome </h4>
+            <h4 className="text-center">{state.user.name}</h4>
+            <h4 class="text-secondary text-center">{state.user.email}</h4>
           </div>
           <div className="card-body">
             <div className="row">

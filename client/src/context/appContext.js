@@ -5,6 +5,8 @@ export const AppContext = createContext();
 const initialState = {
   isLogin: false, //sementara
   carts: [],
+  isLoading: true,
+  user: null,
 };
 
 const reducer = (state, action) => {
@@ -45,15 +47,38 @@ const reducer = (state, action) => {
           (product) => product.id !== action.payload.id
         ),
       };
-    case "LOGIN":
+
+    case "USER_LOADED":
       return {
         ...state,
         isLogin: true,
+        isLoading: false,
+        user: {
+          name: action.payload.name,
+          email: action.payload.email,
+        },
       };
+
+    case "LOGIN":
+      localStorage.setItem("token", action.payload.token);
+
+      return {
+        ...state,
+        isLogin: true,
+        isLoading: false,
+        user: {
+          name: action.payload.name,
+          email: action.payload.email,
+        },
+      };
+    case "AUTH_ERROR":
     case "LOGOUT":
+      localStorage.removeItem("token");
+
       return {
         ...state,
         isLogin: false,
+        isLoading: false,
       };
     default:
       throw new Error();

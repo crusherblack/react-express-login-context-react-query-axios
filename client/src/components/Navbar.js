@@ -28,6 +28,9 @@ const NavbarComponent = () => {
         <Nav.Link as={Link} to="/cart" className="text-white">
           Product: {state.carts.length}
         </Nav.Link>
+        <Nav.Link as={Link} to="/logout" className="text-white">
+          Logout
+        </Nav.Link>
       </Navbar.Collapse>
     </Navbar>
   );
